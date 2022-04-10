@@ -1,0 +1,46 @@
+.sidebar {
+  grid-column: side-bar/full-start;
+  background-color: $purple;
+  &__wrapper {
+      height: 90%;
+    &__logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 9.4rem;
+      border-bottom: 1px solid $dark-purple;
+    }
+    &__menu {
+        &__option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 9.4rem;
+            color: $white;
+            font-size: 1.4rem;
+            &__image {
+                margin-bottom: 1.3rem;
+            }
+        }
+      }
+      &__base {
+            height: 10%;
+            &__option {
+               display: flex;
+               background-color: $purple;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 9.4rem;
+            width: 9.6rem;
+            color: $white;
+            font-size: 1.4rem;
+            &__image {
+                margin-bottom: 1.3rem;
+            } 
+
+            }
+        }
+  }
+}
