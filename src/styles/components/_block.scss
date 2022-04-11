@@ -1,0 +1,38 @@
+.explorer {
+    &__blocks {
+      background-image: linear-gradient(to right, $second-purple-start, $second-purple-end);
+      height: min-content;
+      display: grid;
+      grid-template-columns:
+      [full-start] minmax(4.1rem, auto) [col-start] repeat(
+        2,
+        [inner-col-start] minmax(min-content, 42vw) [inner-col-end]
+      )
+      [col-end] minmax(9.5rem, auto) [full-end];
+      @media screen and (max-width: $small-mid) {
+      grid-template-columns:
+        [full-start] minmax(1rem, auto) [col-start] repeat(
+          2,
+          [inner-col-start] minmax(min-content, 60vw) [inner-col-end]
+        )
+        [col-end] minmax(1rem, auto) [full-end];
+    }
+      &__wrapper {
+          display: grid;
+          grid-column: col-start/col-end;
+          grid-template-columns: repeat((4, 1fr));
+          //grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+          grid-gap: 2.4rem;
+          margin-top: 4.8rem;
+          @media screen and (max-width: $large-small) {
+            grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+          }
+          &__item {
+              height: 38rem;
+              
+              background: rgba(255, 255, 255, 0.25);
+box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+          }
+      }
+    }
+}

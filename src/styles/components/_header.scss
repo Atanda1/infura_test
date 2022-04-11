@@ -1,7 +1,66 @@
 .explorer {
-    &__header {
-        background-image: linear-gradient(to right, #4B4082, #352A70);
-        height: 19.1rem;
-
+  &__header {
+    background-image: linear-gradient(to right, $purple-start, $purple-end);
+    height: min-content;
+    padding-bottom: 5rem;
+    display: grid;
+    grid-template-columns:
+      [full-start] minmax(4.1rem, auto) [col-start] repeat(
+        2,
+        [inner-col-start] minmax(min-content, 42vw) [inner-col-end]
+      )
+      [col-end] minmax(9.5rem, auto) [full-end];
+    // @media screen and (min-width: $large) {
+    //   grid-template-columns:
+    //     [full-start] minmax(1rem, auto) [col-start] repeat(
+    //       2,
+    //       [inner-col-start] minmax(min-content, 35vw) [inner-col-end]
+    //     )
+    //     [col-end] minmax(1rem, auto) [full-end];
+    // }
+    @media screen and (max-width: $small-mid) {
+      grid-template-columns:
+        [full-start] minmax(1rem, auto) [col-start] repeat(
+          2,
+          [inner-col-start] minmax(min-content, 60vw) [inner-col-end]
+        )
+        [col-end] minmax(1rem, auto) [full-end];
     }
+    &__info {
+      grid-column: col-start/col-end;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      //grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+      grid-gap: 2.4rem;
+      margin-top: 4.7rem;
+      @media screen and (max-width: $large-small) {
+            grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+          }
+      &__option {
+        &__text {
+          font-size: 1.6rem;
+          line-height: 2rem;
+          color: $white;
+          opacity: 0.5;         
+        }
+        &__number {
+          color: $white;
+          display: flex;
+          margin-top: 1rem;
+          //font-size: 5.6rem;
+
+          span {
+            font-size: 1.8rem;
+            display: flex;
+
+            align-items: baseline;
+          }
+          span h1 {
+            font-family: 'Akkurat-Light';
+            font-size:5.6rem;
+          }
+        }
+      }
+    }
+  }
 }
