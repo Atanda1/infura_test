@@ -34,14 +34,14 @@
       grid-gap: 2.4rem;
       margin-top: 4.7rem;
       @media screen and (max-width: $large-small) {
-            grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
-          }
+        grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+      }
       &__option {
         &__text {
           font-size: 1.6rem;
           line-height: 2rem;
           color: $white;
-          opacity: 0.5;         
+          opacity: 0.5;
         }
         &__number {
           color: $white;
@@ -52,12 +52,12 @@
           span {
             font-size: 1.8rem;
             display: flex;
-
+            font-family: 'Akkurat-Light';
             align-items: baseline;
           }
           span h1 {
             font-family: 'Akkurat-Light';
-            font-size:5.6rem;
+            font-size: 5.6rem;
           }
         }
       }

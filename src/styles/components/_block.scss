@@ -1,15 +1,15 @@
 .explorer {
-    &__blocks {
-      background-image: linear-gradient(to right, $second-purple-start, $second-purple-end);
-      height: min-content;
-      display: grid;
-      grid-template-columns:
+  &__blocks {
+    background-image: linear-gradient(to right, $second-purple-start, $second-purple-end);
+    height: min-content;
+    display: grid;
+    grid-template-columns:
       [full-start] minmax(4.1rem, auto) [col-start] repeat(
         2,
         [inner-col-start] minmax(min-content, 42vw) [inner-col-end]
       )
       [col-end] minmax(9.5rem, auto) [full-end];
-      @media screen and (max-width: $small-mid) {
+    @media screen and (max-width: $small-mid) {
       grid-template-columns:
         [full-start] minmax(1rem, auto) [col-start] repeat(
           2,
@@ -17,22 +17,83 @@
         )
         [col-end] minmax(1rem, auto) [full-end];
     }
-      &__wrapper {
+    &__wrapper {
+      display: grid;
+      grid-column: col-start/col-end;
+      grid-template-columns: repeat((4, 1fr));
+      //grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+      grid-gap: 2.4rem;
+      margin-top: 4.8rem;
+      @media screen and (max-width: $large-small) {
+        grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+      }
+      &__item {
+        height: 37rem;
+        background: rgba(255, 255, 255, 0.25);
+        box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+        &__footer {
+          display: flex;
+          height: 6.9%;
+          font-size: 1.4rem;
+          padding-left: 1.6rem;
+          line-height: 1.8rem;
+          margin: 0 auto;
+          /* identical to box height */
+
+          color: $white;
+
+          opacity: 0.75;
+          &__text {
+            align-self: center;
+          }
+          &__next {
+            margin-left: auto;
+            width: 3.2rem;
+            background-color: rgba(255, 255, 255, 0.25);
+            display: flex;
+            justify-content: center;
+            img {
+              align-self: center;
+            }
+          }
+        }
+        &__count {
           display: grid;
-          grid-column: col-start/col-end;
-          grid-template-columns: repeat((4, 1fr));
-          //grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
-          grid-gap: 2.4rem;
-          margin-top: 4.8rem;
-          @media screen and (max-width: $large-small) {
-            grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+          // height: 70%;
+          grid-template-columns: repeat(10, 1fr);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          padding: 1.6rem;
+          grid-gap: 0.9rem;
+          &__block {
+            background-color: rgba(255, 255, 255, 0.25);
+            height: 1.6rem;
           }
-          &__item {
-              height: 38rem;
-              
-              background: rgba(255, 255, 255, 0.25);
-box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        &__header {
+          padding: 1.6rem;
+          display: flex;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          &__transactions {
+            margin-left: auto;
+            font-size: 1.6rem;
+            line-height: 2rem;
+
+            color: #ffffff;
           }
+          &__left {
+            &__number {
+              font-size: 1.6rem;
+              line-height: 2rem;
+              color: $white;
+            }
+            &__time {
+              font-size: 1.4rem;
+              line-height: 1.8rem;
+              color: rgba(255, 255, 255, 0.75);
+            }
+          }
+        }
       }
     }
+  }
 }

@@ -1,3 +1,9 @@
 .explorer {
-    grid-column: full-start/full-end;
+  grid-column: full-start/full-end;
+  &__load {
+    display: flex;
+    padding: 4.8rem 0 13.9rem 0;
+    //margin-bottom: 13.9rem;
+    background-image: linear-gradient(to right, $second-purple-start, $second-purple-end);
+  }
 }
