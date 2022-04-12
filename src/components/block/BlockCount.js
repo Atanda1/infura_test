@@ -1,14 +1,15 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Web3 from 'web3';
 import PropTypes from 'prop-types';
-import ReactTooltip from 'react-tooltip';
+import Tooltip from '../tooltip/tooltip';
+
 const BlockCount = ({ block }) => {
   const [isShown, setIsShown] = useState(false);
-  const [currentTransaction, setTransaction] = useState({});
-  const Count = (number) => {
-    if (number > 100) {
-      return 100;
-    } else return number;
+  const currentTransaction = useRef(null);
+  const Count = (transactions) => {
+    if (transactions.length > 100) {
+      return transactions.slice(0, 100);
+    } else if (transactions.length <= 100) return transactions;
   };
 
   const CountColor = (number) => {
@@ -48,68 +49,30 @@ const BlockCount = ({ block }) => {
     const web3Provider = new Web3.providers.HttpProvider(provider);
     const web3 = new Web3(web3Provider);
     let transaction = await web3.eth.getTransaction(transactionHash);
-    let transactionReceipt = await web3.eth.getTransactionReceipt(transactionHash);
-    transaction = Object.assign(transaction, transactionReceipt);
-    //console.log('Transaction: ', transaction);
-    await setTransaction(transaction);
-    console.log(currentTransaction);
+    currentTransaction.current = transaction;
+    console.log(currentTransaction.current);
   };
 
   return (
     <div className="explorer__blocks__wrapper__item__count">
       <>
-        {[...Array(Count(block.transactions.length))].map((x, i) => (
+        {Count(block.transactions).map((transaction, index) => (
           <div
             data-tip
             data-for="transaction"
-            key={i}
-            onMouseEnter={() => displayTransactions(block.transactions[i])}
+            key={index}
+            onMouseEnter={() => displayTransactions(transaction)}
             onMouseLeave={() => setIsShown(false)}>
             <div
               className={`${
-                CountColor(i)
+                CountColor(index + 1)
                   ? 'explorer__blocks__wrapper__item__count__block__coloured'
                   : 'explorer__blocks__wrapper__item__count__block'
-              } `}>
-              {/* {i + 1} */}
-            </div>
+              } `}></div>
           </div>
         ))}
-        {isShown && (
-          <ReactTooltip
-            className="transaction__tooltip"
-            backgroundColor="#ffff"
-            id="transaction"
-            place="right"
-            effect="solid">
-            <div className="transaction__tooltip__location">
-              <div className="transaction__tooltip__location__sender">
-                <h3 className="transaction__tooltip__location__sender__title">FROM</h3>
-                <h3 className="transaction__tooltip__location__sender__address">
-                  {currentTransaction ? `${currentTransaction.from}` : <h3>Loading</h3>}
-                </h3>
-              </div>
-              <div className="transaction__tooltip__location__receiver">
-                <h3 className="transaction__tooltip__location__receiver__title">TO</h3>
-                <h3 className="transaction__tooltip__location__receiver__address">
-                  {currentTransaction ? `${currentTransaction.to}` : <h3>Loading</h3>}
-                </h3>
-              </div>
-            </div>
-            <div className="transaction__tooltip__value">
-              <div className="transaction__tooltip__value__transaction">
-                <h3 className="transaction__tooltip__value__transaction__title">VALUE</h3>
-                <h3 className="transaction__tooltip__value__transaction__amount">
-                  5{currentTransaction ? `${currentTransaction.value}` : <h3>Loading</h3>}
-                </h3>
-              </div>
-              <div className="transaction__tooltip__value__cash">
-                <h3>$1452</h3>
-                <span>@</span>
-                <h3>$90.10</h3>
-              </div>
-            </div>
-          </ReactTooltip>
+        {isShown && currentTransaction.current && (
+          <Tooltip transaction={currentTransaction.current} />
         )}
       </>
     </div>

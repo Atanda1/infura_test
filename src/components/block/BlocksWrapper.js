@@ -6,7 +6,7 @@ const BlocksWrapper = ({ blocks, isLoading }) => {
   return (
     <div className="explorer__blocks__wrapper">
       {isLoading !== true
-        ? blocks.map((block) => <Block block={block} key={block.mixhash} />)
+        ? blocks.map((block, index) => <Block block={block} key={index} />)
         : [...Array(12)].map((x, i) => <BlockPlaceholder key={i + 1} />)}
     </div>
   );
