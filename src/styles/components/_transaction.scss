@@ -1,0 +1,74 @@
+.transaction {
+  &__tooltip {
+    border-radius: 0 !important;
+    color: black !important;
+    font-family: 'Akkurat-Light';
+    width: min-content;
+    margin-top: .2rem !important;
+    &__location {
+      display: flex;
+      align-items: end;
+      justify-content: start;
+      margin: 1rem 0;
+      &__sender {
+        &__title {
+          color: $cement-grey;
+          font-size: 1.2rem;
+          line-height: 1.5rem;
+          margin-bottom: 1rem;
+          font-weight: 500;
+        }
+        &__address {
+          color: $tooltip-purple;
+          font-size: 1.6rem;
+        }
+      }
+      &__receiver {
+        margin-left: 3rem;
+        &__title {
+          color: $cement-grey;
+          font-size: 1.2rem;
+          line-height: 1.5rem;
+          margin-bottom: 1rem;
+          font-weight: 500;
+        }
+        &__address {
+          color: $tooltip-purple;
+          font-size: 1.6rem;
+        }
+      }
+    }
+    &__value {
+        display: flex;
+      align-items: end;
+      justify-content: start;
+      padding-bottom: .4rem;
+      
+      &__transaction {
+        &__title {
+          color: $cement-grey;
+          font-size: 1.2rem;
+          line-height: 1.5rem;
+          margin-bottom: .6rem;
+          font-weight: 500;
+        }
+        &__amount {
+          color: $tooltip-purple;
+          font-size: 1.6rem;
+        }
+      }
+      &__cash {
+          display: flex;
+          color: $cement-grey;
+          font-size: 1.2rem;
+          margin-left: auto;
+          h3 {
+            margin-left: .7rem;
+          }
+          span {
+            margin-left: .7rem;
+          }
+      }
+    }
+  }
+}

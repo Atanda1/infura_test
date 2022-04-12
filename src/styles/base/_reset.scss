@@ -170,3 +170,22 @@ table {
 .selected {
   background-color: $selected-purple;
 }
+
+.placeholder {
+  &__title {
+    background: rgba(255, 255, 255, 0.1);
+    width: 8rem;
+    height: 1.6rem;
+    margin-bottom: .7rem;
+  }
+  &__option {
+    height: 5.6rem;
+    background: rgba(255, 255, 255, 0.1);
+    width: 18rem;
+  } 
+  &__sub {
+     background: rgba(255, 255, 255, 0.1);
+    width: 5rem;
+    height: 1.6rem;
+  }
+}

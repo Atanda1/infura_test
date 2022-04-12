@@ -24,18 +24,29 @@
       //grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
       grid-gap: 2.4rem;
       margin-top: 4.8rem;
+      
       @media screen and (max-width: $large-small) {
         grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+      }
+     
+      &:hover > div {
+        opacity: .2;
+        transition: opacity .3s ease-in;
+      }
+      &:hover > div:hover {
+        opacity: 1;
       }
       &__item {
         height: 37rem;
         background: rgba(255, 255, 255, 0.25);
         box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+        transition: opacity .3s ease-in;
         &__footer {
           display: flex;
           height: 6.9%;
           font-size: 1.4rem;
           padding-left: 1.6rem;
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
           line-height: 1.8rem;
           margin: 0 auto;
           /* identical to box height */
@@ -61,12 +72,27 @@
           display: grid;
           // height: 70%;
           grid-template-columns: repeat(10, 1fr);
-          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
           padding: 1.6rem;
           grid-gap: 0.9rem;
+          &__placeholder {
+            display: grid;
+            // height: 70%;
+            grid-template-columns: repeat(10, 1fr);
+            padding: 1.6rem;
+            grid-gap: 0.9rem;
+          }
           &__block {
             background-color: rgba(255, 255, 255, 0.25);
             height: 1.6rem;
+            &__coloured {
+              background-color: rgba(255, 255, 255, 0.75);
+              height: 1.6rem;
+            }
+            &__placeholder {
+              background: rgba(255, 255, 255, 0.1);
+              height: 1.6rem;
+            }
           }
         }
         &__header {
