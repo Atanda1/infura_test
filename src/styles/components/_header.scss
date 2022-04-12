@@ -10,14 +10,14 @@
         [inner-col-start] minmax(min-content, 42vw) [inner-col-end]
       )
       [col-end] minmax(9.5rem, auto) [full-end];
-    // @media screen and (min-width: $large) {
-    //   grid-template-columns:
-    //     [full-start] minmax(1rem, auto) [col-start] repeat(
-    //       2,
-    //       [inner-col-start] minmax(min-content, 35vw) [inner-col-end]
-    //     )
-    //     [col-end] minmax(1rem, auto) [full-end];
-    // }
+    @media screen and (min-width: $large) {
+      grid-template-columns:
+        [full-start] minmax(1rem, auto) [col-start] repeat(
+          2,
+          [inner-col-start] minmax(min-content, 35vw) [inner-col-end]
+        )
+        [col-end] minmax(1rem, auto) [full-end];
+    }
     @media screen and (max-width: $small-mid) {
       grid-template-columns:
         [full-start] minmax(1rem, auto) [col-start] repeat(

@@ -27,13 +27,11 @@ const ExplorerSection = () => {
     setweb3(web3);
     web3.eth.getBlockNumber(async (error, result) => {
       if (!error) {
-        console.log(result);
         const allBlocks = [];
         for (var i = 0; i < 20; i++) {
           var block = await web3.eth.getBlock(result - i);
           allBlocks.push(block);
         }
-        console.log(allBlocks);
         await setBlocks(allBlocks);
         await setIsLoading(false);
       }
@@ -45,9 +43,6 @@ const ExplorerSection = () => {
 
   const loadMoreBlocks = async () => {
     setLoadingMore('LOADING MORE...');
-    console.log('data');
-    console.log(web3);
-    console.log(blocks.slice(-1)[0].number);
     const allBlocks = [];
     for (var i = 0; i < 20; i++) {
       var block = await web3.eth.getBlock(blocks.slice(-1)[0].number - i);

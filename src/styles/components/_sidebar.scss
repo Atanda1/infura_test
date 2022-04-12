@@ -2,11 +2,9 @@
   grid-column: side-bar/full-start;
   background-color: $purple;
   overflow: hidden;
+  display: grid;
   &__wrapper {
-    height: 85%;
-    @media screen and (max-width: $small) {
-      height: 92%;
-    }
+   // display: grid;
     &__logo {
       display: flex;
       align-items: center;
@@ -31,10 +29,7 @@
     
   }
   &__base {
-      height: 15%;
-      @media screen and (max-width: $small) {
-        height: 8%;
-      }
+      align-self: flex-end;
       &__option {
         display: flex;
         background-color: $purple;

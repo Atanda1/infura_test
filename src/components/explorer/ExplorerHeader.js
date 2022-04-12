@@ -3,10 +3,8 @@ import PropTypes from 'prop-types';
 
 const ExplorerHeader = ({ blockData, isLoading }) => {
   const getBlockData = (blockData, info) => {
-    console.log(blockData);
     let data;
     if (blockData.length > 0) {
-      console.log(blockData[0]);
       switch (info) {
         case 'number':
           data = `${blockData[0].number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`;

@@ -44,13 +44,11 @@ const BlockCount = ({ block }) => {
 
   const displayTransactions = async (transactionHash) => {
     setIsShown(true);
-    console.log(transactionHash);
     const provider = process.env.REACT_APP_PROVIDER;
     const web3Provider = new Web3.providers.HttpProvider(provider);
     const web3 = new Web3(web3Provider);
     let transaction = await web3.eth.getTransaction(transactionHash);
     currentTransaction.current = transaction;
-    console.log(currentTransaction.current);
   };
 
   return (
