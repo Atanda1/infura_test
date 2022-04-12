@@ -50,8 +50,9 @@ const BlockCount = ({ block }) => {
     let transaction = await web3.eth.getTransaction(transactionHash);
     let transactionReceipt = await web3.eth.getTransactionReceipt(transactionHash);
     transaction = Object.assign(transaction, transactionReceipt);
-    console.log('Transaction: ', transaction);
-    await setTransaction(currentTransaction);
+    //console.log('Transaction: ', transaction);
+    await setTransaction(transaction);
+    console.log(currentTransaction);
   };
 
   return (
@@ -84,17 +85,23 @@ const BlockCount = ({ block }) => {
             <div className="transaction__tooltip__location">
               <div className="transaction__tooltip__location__sender">
                 <h3 className="transaction__tooltip__location__sender__title">FROM</h3>
-                <h3 className="transaction__tooltip__location__sender__address">8930...0x323</h3>
+                <h3 className="transaction__tooltip__location__sender__address">
+                  {currentTransaction ? `${currentTransaction.from}` : <h3>Loading</h3>}
+                </h3>
               </div>
               <div className="transaction__tooltip__location__receiver">
                 <h3 className="transaction__tooltip__location__receiver__title">TO</h3>
-                <h3 className="transaction__tooltip__location__receiver__address">8930...0x323</h3>
+                <h3 className="transaction__tooltip__location__receiver__address">
+                  {currentTransaction ? `${currentTransaction.to}` : <h3>Loading</h3>}
+                </h3>
               </div>
             </div>
             <div className="transaction__tooltip__value">
               <div className="transaction__tooltip__value__transaction">
                 <h3 className="transaction__tooltip__value__transaction__title">VALUE</h3>
-                <h3 className="transaction__tooltip__value__transaction__amount">500 ETH</h3>
+                <h3 className="transaction__tooltip__value__transaction__amount">
+                  5{currentTransaction ? `${currentTransaction.value}` : <h3>Loading</h3>}
+                </h3>
               </div>
               <div className="transaction__tooltip__value__cash">
                 <h3>$1452</h3>
