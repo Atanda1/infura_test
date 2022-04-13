@@ -46,7 +46,7 @@ const Tooltip = ({ transactionHash }) => {
 
           <div className="transaction__tooltip__location__receiver__address">
             {newTransaction.to ? (
-              `${newTransaction.from.slice(0, 4) + '...' + newTransaction.from.slice(-4)}`
+              `${newTransaction.to.slice(0, 4) + '...' + newTransaction.to.slice(-4)}`
             ) : (
               <h3>Loading</h3>
             )}
