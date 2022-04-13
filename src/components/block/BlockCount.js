@@ -76,3 +76,8 @@ const BlockCount = ({ block }) => {
 };
 
 export default BlockCount;
+
+BlockCount.propTypes = {
+  block: PropTypes.object
+};
+
