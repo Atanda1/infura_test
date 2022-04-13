@@ -48,35 +48,31 @@ const BlockCount = ({ block }) => {
   };
 
   return (
-    <div className="explorer__blocks__wrapper__item__count">
-      <>
-        {Count(block.transactions).map((transaction, index) => (
-          <div
-            data-tip
-            data-for="transaction"
-            key={index}
-            onMouseEnter={() => displayTransactions(transaction)}
-            onMouseLeave={() => setIsShown(false)}>
+    <div>
+      <div className="explorer__blocks__wrapper__item__count">
+        <>
+          {Count(block.transactions).map((transaction, index) => (
             <div
-              className={`${
-                CountColor(index + 1)
-                  ? 'explorer__blocks__wrapper__item__count__block__coloured'
-                  : 'explorer__blocks__wrapper__item__count__block'
-              } `}></div>
-          </div>
-        ))}
-        {isShown && currentTransaction.current && (
-          <div>
+              data-tip
+              data-for="transaction"
+              key={index}
+              onMouseEnter={() => displayTransactions(transaction)}
+              onMouseLeave={() => setIsShown(false)}>
+              <div
+                className={`${
+                  CountColor(index + 1)
+                    ? 'explorer__blocks__wrapper__item__count__block__coloured'
+                    : 'explorer__blocks__wrapper__item__count__block'
+                } `}></div>
+            </div>
+          ))}
+          {isShown && currentTransaction.current && (
             <Tooltip transactionHash={currentTransaction.current} />
-          </div>
-        )}
-      </>
+          )}
+        </>
+      </div>
     </div>
   );
 };
 
 export default BlockCount;
-
-BlockCount.propTypes = {
-  block: PropTypes.object
-};
