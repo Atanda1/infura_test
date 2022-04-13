@@ -1,4 +1,5 @@
 import Web3 from 'web3';
+import { web3 } from '../../web3/index';
 import PropTypes from 'prop-types';
 import ReactTooltip from 'react-tooltip';
 import { useEffect, useState } from 'react';
@@ -8,9 +9,6 @@ const Tooltip = ({ transactionHash }) => {
   useEffect(() => {
     async function first() {
       console.log(transactionHash);
-      const provider = process.env.REACT_APP_PROVIDER;
-      const web3Provider = new Web3.providers.HttpProvider(provider);
-      const web3 = new Web3(web3Provider);
       let transaction = await web3.eth.getTransaction(transactionHash);
       setTransaction(transaction);
       console.log(transaction);

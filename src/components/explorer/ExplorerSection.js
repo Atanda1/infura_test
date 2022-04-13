@@ -2,8 +2,8 @@ import BlocksWrapper from '../block/BlocksWrapper';
 import ExplorerHeader from './ExplorerHeader';
 import LoadButton from '../button/LoadButton';
 import { useEffect, useState } from 'react';
-import Web3 from 'web3';
 import TopBarProgress from 'react-topbar-progress-indicator';
+import { web3 } from '../../web3/index';
 
 TopBarProgress.config({
   barColors: {
@@ -16,15 +16,10 @@ TopBarProgress.config({
 const ExplorerSection = () => {
   const [blocks, setBlocks] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [web3, setweb3] = useState(null);
   const [loadingMore, setLoadingMore] = useState('LOAD MORE');
 
   useEffect(() => {
     setIsLoading(true);
-    const provider = process.env.REACT_APP_PROVIDER;
-    const web3Provider = new Web3.providers.HttpProvider(provider);
-    const web3 = new Web3(web3Provider);
-    setweb3(web3);
     web3.eth.getBlockNumber(async (error, result) => {
       if (!error) {
         const allBlocks = [];
