@@ -4,14 +4,9 @@ import LoadButton from '../button/LoadButton';
 import { useEffect, useState } from 'react';
 import TopBarProgress from 'react-topbar-progress-indicator';
 import { web3 } from '../../web3/index';
+import { config } from '../../loader/topbarConfig';
 
-TopBarProgress.config({
-  barColors: {
-    0: '#4b4082',
-    '1.0': '#fff'
-  },
-  shadowBlur: 5
-});
+TopBarProgress.config(config);
 
 const ExplorerSection = () => {
   const [blocks, setBlocks] = useState([]);
