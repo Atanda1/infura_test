@@ -54,7 +54,7 @@ const ExplorerSection = () => {
       var block = await web3.eth.getBlock(blocks.slice(-1)[0].number - i);
       allBlocks.push(block);
     }
-    await setBlocks([...blocks, ...allBlocks]);
+    setBlocks([...blocks, ...allBlocks]);
     setLoadingMore('LOAD MORE');
   };
 
