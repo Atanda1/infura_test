@@ -44,7 +44,6 @@ const ExplorerSection = () => {
     }
     setBlocks(allBlocks);
     setUpdateBlock(Math.random());
-    console.log(updateBlock);
     setIsLoading(false);
   };
 

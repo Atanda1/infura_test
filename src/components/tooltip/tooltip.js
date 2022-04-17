@@ -8,10 +8,8 @@ const Tooltip = ({ transactionHash }) => {
   const [newTransaction, setTransaction] = useState({});
   useEffect(() => {
     async function first() {
-      console.log(transactionHash);
       let transaction = await web3.eth.getTransaction(transactionHash);
       setTransaction(transaction);
-      console.log(transaction);
     }
     first();
   }, [transactionHash]);
