@@ -19,7 +19,7 @@ const ExplorerSection = () => {
     if (updateBlock == 789) {
       setIsLoading(true);
     }
-    setTimeout(() => getLatestestBlockRequest(), 6000);
+    setTimeout(() => getLatestestBlockRequest(), 2000);
   }, [updateBlock]);
 
   const getLatestestBlockRequest = () => {
