@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.26.1",
     "format": "^0.2.2",
+    "hex2dec": "^1.1.2",
     "moment": "^2.29.2",
     "prop-types": "^15.8.1",
     "react": "^18.0.0",
