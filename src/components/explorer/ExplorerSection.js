@@ -13,9 +13,14 @@ const ExplorerSection = () => {
   const [blocks, setBlocks] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [loadingMore, setLoadingMore] = useState('LOAD MORE');
+  const [updateBlock, setUpdateBlock] = useState(789);
 
   useEffect(() => {
     setIsLoading(true);
+    setTimeout(() => getLatestestBlockRequest(), 30000);
+  }, [updateBlock]);
+
+  const getLatestestBlockRequest = () => {
     axios
       .post(process.env.REACT_APP_PROVIDER, {
         jsonrpc: '2.0',
@@ -25,9 +30,11 @@ const ExplorerSection = () => {
       })
       .then((res) => {
         getLatestestBlock(parseInt(res.data.result, 16));
+        setUpdateBlock(Math.random());
+        console.log(updateBlock);
       })
       .catch((err) => console.log(err));
-  }, []);
+  };
 
   const getLatestestBlock = async (result) => {
     const allBlocks = [];
@@ -35,8 +42,8 @@ const ExplorerSection = () => {
       var block = await web3.eth.getBlock(result - i);
       allBlocks.push(block);
     }
-    await setBlocks(allBlocks);
-    await setIsLoading(false);
+    setBlocks(allBlocks);
+    setIsLoading(false);
   };
 
   const loadMoreBlocks = async () => {
