@@ -16,8 +16,10 @@ const ExplorerSection = () => {
   const [updateBlock, setUpdateBlock] = useState(789);
 
   useEffect(() => {
-    setIsLoading(true);
-    setTimeout(() => getLatestestBlockRequest(), 30000);
+    if (updateBlock == 789) {
+      setIsLoading(true);
+    }
+    setTimeout(() => getLatestestBlockRequest(), 6000);
   }, [updateBlock]);
 
   const getLatestestBlockRequest = () => {
@@ -30,8 +32,6 @@ const ExplorerSection = () => {
       })
       .then((res) => {
         getLatestestBlock(parseInt(res.data.result, 16));
-        setUpdateBlock(Math.random());
-        console.log(updateBlock);
       })
       .catch((err) => console.log(err));
   };
@@ -43,6 +43,8 @@ const ExplorerSection = () => {
       allBlocks.push(block);
     }
     setBlocks(allBlocks);
+    setUpdateBlock(Math.random());
+    console.log(updateBlock);
     setIsLoading(false);
   };
 
